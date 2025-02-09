@@ -26,7 +26,8 @@ orbit.update();
 const axesHelper = new THREE.AxesHelper(4);
 scene.add(axesHelper);
 const uniforms = {
-    u_time: { value: 0.0}
+    u_time: { value: 0.0},
+    u_frequency: { value: 0.0 },
 };
 const mat = new THREE.ShaderMaterial({
     wireframe: true,
@@ -35,12 +36,26 @@ const mat = new THREE.ShaderMaterial({
     fragmentShader: document.getElementById('fragmentshader').textContent,
 });
 
+const listener = new THREE.AudioListener();
+camera.add(listener);
+
+const sound = new THREE.Audio(listener);
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load('/audio.mp3', function (buffer) {
+  sound.setBuffer(buffer);
+  window.addEventListener('click', function () {
+    sound.play();
+  });
+});
+
+const analyser = new THREE.AudioAnalyser(sound, 32);
 const geo = new THREE.IcosahedronGeometry(4,30);
 const mesh = new THREE.Mesh(geo, mat);
 scene.add(mesh);
 
 const clock = new THREE.Clock();
 function animate() {
+    uniforms.u_frequency.value = analyser.getAverageFrequency();
     uniforms.u_time.value = clock.getElapsedTime();
     renderer.render(scene, camera);
 }
