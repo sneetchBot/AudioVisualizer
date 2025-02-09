@@ -104,7 +104,7 @@
             return 2.2 * n_xyz;
         }
         void main() {
-            float noise = 3.5pnoise(position + u_time, vec3(10.));
+            float noise = 3.5 * pnoise(position + u_time, vec3(10.));
             float displacement = (u_frequency / 30.) * (noise / 10.);
             vec3 newPosition = position + normal * displacement;
           
