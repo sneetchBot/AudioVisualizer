@@ -1,5 +1,7 @@
 # Audio Visualiser
 
+![](https://github.com/sneetchBot/AudioVisualizer.git/public/demo.gif)
+
 This is the code for a 3D Audio visualizer using Three.js
 
 To run:
