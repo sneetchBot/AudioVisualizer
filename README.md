@@ -1,9 +1,13 @@
 # Audio Visualiser
+# Audio Visualiser
 
+![](public/demo.gif)
 ![](public/demo.gif)
 
 This is the code for a 3D Audio visualizer using Three.js
+This is the code for a 3D Audio visualizer using Three.js
 
+To run:
 To run:
 1. Clone the repository;
 2. Open the folder in Visual Studio Code;
